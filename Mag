@@ -1,0 +1,1249 @@
+```html
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAG Fragrances | Signature Scent Atelier</title>
+    
+    <!-- Google Fonts: Cormorant Garamond (Luxury Serif), Alex Brush (Script Logo), Plus Jakarta Sans (UI Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        script: ['"Alex Brush"', 'cursive'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        gold: {
+                            50: '#FAF6E9',
+                            100: '#F5ECCE',
+                            200: '#E7D598',
+                            300: '#F3E5AB', // Soft Gold Accent
+                            400: '#D4AF37', // Polished Gold
+                            500: '#C5A059', // MAG Signature Gold
+                            600: '#AA8237',
+                            700: '#836125',
+                            800: '#5D4318',
+                            900: '#3A270B',
+                        },
+                        obsidian: {
+                            950: '#050507',
+                            900: '#0A0A0A',
+                            850: '#121216',
+                            800: '#181820',
+                            700: '#22222E',
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'shimmer': 'shimmer 2.5s infinite',
+                        'spin-slow': 'spin 12s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-8px)' },
+                        },
+                        shimmer: {
+                            '100%': { transform: 'translateX(100%)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Luxury Styles -->
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #F1F5F9;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Gold Gradient Text */
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF8DF 0%, #F3E5AB 30%, #D4AF37 70%, #997825 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Glassmorphism Panel */
+        .glass-panel {
+            background: rgba(18, 18, 24, 0.75);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(212, 175, 55, 0.18);
+        }
+
+        .glass-panel-hover:hover {
+            border-color: rgba(212, 175, 55, 0.45);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.15);
+        }
+
+        /* Option Card Active State */
+        .option-selected {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.18) 0%, rgba(18, 18, 24, 0.95) 100%) !important;
+            border-color: rgba(212, 175, 55, 0.85) !important;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.25);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #22222E;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4AF37;
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.4s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-gold-400 selection:text-black relative">
+
+    <!-- Ambient Ambient Lighting & Background Effects -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div class="absolute -top-40 -left-40 w-[500px] h-[500px] bg-gold-400/10 rounded-full blur-[150px] animate-pulse-slow"></div>
+        <div class="absolute top-1/2 -right-40 w-[550px] h-[550px] bg-amber-700/10 rounded-full blur-[170px]"></div>
+        <div class="absolute -bottom-40 left-1/3 w-[600px] h-[600px] bg-gold-500/5 rounded-full blur-[180px]"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(#ffffff03_1px,transparent_1px)] [background-size:32px_32px]"></div>
+    </div>
+
+    <!-- MAIN BRAND HEADER WITH VECTOR LOGO -->
+    <header class="relative z-20 w-full border-b border-gold-400/20 glass-panel py-4 px-4 sm:px-8 md:px-12">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            
+            <!-- MAG FRAGRANCES REPLICATED BRAND LOGO -->
+            <div class="cursor-pointer group flex items-center justify-center" onclick="navTo('intro')">
+                <svg width="260" height="75" viewBox="0 0 320 95" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition-transform duration-300 group-hover:scale-105">
+                    <defs>
+                        <linearGradient id="magGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#FFF8DF" />
+                            <stop offset="35%" stop-color="#F3E5AB" />
+                            <stop offset="70%" stop-color="#D4AF37" />
+                            <stop offset="100%" stop-color="#8C6621" />
+                        </linearGradient>
+                        <linearGradient id="scriptGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95" />
+                            <stop offset="50%" stop-color="#F3E5AB" />
+                            <stop offset="100%" stop-color="#D4AF37" />
+                        </linearGradient>
+                    </defs>
+
+                    <!-- Serif Main Letters: M A G -->
+                    <text x="35" y="68" font-family="'Cormorant Garamond', serif" font-size="80" font-weight="300" fill="url(#magGoldGrad)" letter-spacing="3">M</text>
+                    <text x="125" y="68" font-family="'Cormorant Garamond', serif" font-size="80" font-weight="300" fill="url(#magGoldGrad)" letter-spacing="3">A</text>
+                    <text x="210" y="68" font-family="'Cormorant Garamond', serif" font-size="80" font-weight="300" fill="url(#magGoldGrad)" letter-spacing="3">G</text>
+
+                    <!-- Elegant Cursive Intertwined Script: Fragrances -->
+                    <text x="98" y="50" font-family="'Alex Brush', cursive" font-size="36" fill="url(#scriptGrad)" opacity="0.98">Fragrances</text>
+
+                    <!-- Subtext: EST. 2025 -->
+                    <text x="160" y="88" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="600" fill="#999999" letter-spacing="7" text-anchor="middle">EST. 2025</text>
+                </svg>
+            </div>
+
+            <!-- Top Navigation Buttons -->
+            <div class="flex items-center space-x-3">
+                <button onclick="navTo('catalog')" class="text-xs font-semibold uppercase tracking-[0.2em] text-gray-300 hover:text-gold-300 transition-colors px-4 py-2 rounded-full border border-gold-400/30 hover:border-gold-400/70 bg-gold-400/10 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-gold-400 animate-pulse"></span>
+                    <span>Catalog (9 Scents)</span>
+                </button>
+
+                <button onclick="openShareModal()" class="text-xs font-semibold uppercase tracking-[0.15em] text-gold-300 hover:text-white transition-all px-4 py-2 rounded-full border border-gold-400/40 bg-gradient-to-r from-gold-500/20 to-gold-400/10 hover:border-gold-400 flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 100-2.684 3 3 0 000 2.684zm0 9a3 3 0 100-2.684 3 3 0 000 2.684z"></path></svg>
+                    <span>Get Share Link</span>
+                </button>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- MAIN APP CONTENT AREA -->
+    <main class="relative z-10 max-w-6xl mx-auto w-full px-4 py-8 md:py-12 flex-grow flex items-center justify-center">
+
+        <!-- ================= 1. INTRO LANDING VIEW ================= -->
+        <section id="view-intro" class="w-full max-w-3xl text-center space-y-8 fade-in-up">
+            
+            <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-gold-400/40 bg-gold-400/10 text-gold-300 text-xs tracking-[0.25em] uppercase font-semibold">
+                <span>✦ MAG Olfactory Match Atelier ✦</span>
+            </div>
+
+            <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-light tracking-tight text-white leading-[1.12]">
+                Discover Your Perfect <br class="hidden sm:block"/>
+                <span class="font-normal italic gold-gradient-text">MAG Signature Scent</span>
+            </h1>
+
+            <p class="text-gray-300 text-sm md:text-base max-w-xl mx-auto font-light leading-relaxed">
+                Take our 5-question fragrance consultation to pinpoint your ideal olfactory match from our 9 custom formulations—crafted for presence, elegance, and distinction.
+            </p>
+
+            <!-- 3 Highlights Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2 max-w-2xl mx-auto text-left">
+                <div class="glass-panel p-4 rounded-2xl border border-white/5 flex items-start space-x-3">
+                    <span class="text-gold-400 text-xl font-serif">01</span>
+                    <div>
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-white">5 Precision Questions</h4>
+                        <p class="text-[11px] text-gray-400 mt-0.5">Matches your mood, desired sillage, and scent preferences.</p>
+                    </div>
+                </div>
+                <div class="glass-panel p-4 rounded-2xl border border-white/5 flex items-start space-x-3">
+                    <span class="text-gold-400 text-xl font-serif">02</span>
+                    <div>
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-white">9 Pure Formulations</h4>
+                        <p class="text-[11px] text-gray-400 mt-0.5">Aquatic, gourmand, oriental, spicy, and daring accords.</p>
+                    </div>
+                </div>
+                <div class="glass-panel p-4 rounded-2xl border border-white/5 flex items-start space-x-3">
+                    <span class="text-gold-400 text-xl font-serif">03</span>
+                    <div>
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-white">Notes Pyramid</h4>
+                        <p class="text-[11px] text-gray-400 mt-0.5">Unveils top, heart, and base notes tailored to you.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Start Quiz Button -->
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button onclick="startQuiz()" class="group relative inline-flex items-center justify-center px-10 py-4 font-semibold tracking-[0.15em] text-xs text-obsidian-950 bg-gradient-to-r from-gold-300 via-gold-400 to-gold-500 rounded-full shadow-lg shadow-gold-400/20 hover:shadow-gold-400/40 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] w-full sm:w-auto">
+                    <span class="uppercase font-bold">Begin Scent Consultation</span>
+                    <svg class="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
+                </button>
+
+                <button onclick="navTo('catalog')" class="px-8 py-4 rounded-full border border-gold-400/40 text-gold-300 font-semibold tracking-[0.15em] text-xs uppercase hover:bg-gold-400/10 transition-all w-full sm:w-auto">
+                    Browse All 9 Scents
+                </button>
+            </div>
+
+            <p class="text-[10px] text-gray-400 uppercase tracking-[0.25em]">MAG FRAGRANCES • EST. 2025</p>
+
+        </section>
+
+
+        <!-- ================= 2. QUIZ QUESTION VIEW ================= -->
+        <section id="view-quiz" class="w-full max-w-3xl hidden fade-in-up">
+            <div class="glass-panel rounded-3xl p-6 md:p-10 border border-gold-400/30 relative shadow-2xl">
+                
+                <!-- Progress Bar & Header -->
+                <div class="flex items-center justify-between mb-6 pb-4 border-b border-white/10">
+                    <div>
+                        <span id="quiz-step-indicator" class="text-xs font-bold tracking-[0.2em] text-gold-400 uppercase">Question 1 of 5</span>
+                        <h3 id="quiz-category-indicator" class="text-[11px] text-gray-400 uppercase tracking-widest font-light mt-0.5">Atmosphere & Mood</h3>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span id="quiz-progress-text" class="text-xs font-mono font-bold text-gold-300">20%</span>
+                    </div>
+                </div>
+
+                <!-- Glowing Progress Track -->
+                <div class="w-full bg-obsidian-950 rounded-full h-1.5 mb-8 overflow-hidden border border-white/5">
+                    <div id="quiz-progress-bar" class="bg-gradient-to-r from-gold-500 via-gold-300 to-white h-1.5 rounded-full transition-all duration-500 ease-out" style="width: 20%"></div>
+                </div>
+
+                <!-- Question Header -->
+                <div class="mb-8">
+                    <h2 id="quiz-title" class="font-serif text-2xl md:text-4xl text-white font-medium leading-snug">
+                        What atmosphere do you want your fragrance to create?
+                    </h2>
+                    <p id="quiz-subtitle" class="text-xs md:text-sm text-gray-400 mt-2 font-light">
+                        Select the sensory emotion you wish to embody.
+                    </p>
+                </div>
+
+                <!-- Options List Container -->
+                <div id="quiz-options-container" class="grid grid-cols-1 gap-3.5 mb-8">
+                    <!-- Options injected dynamically by JS -->
+                </div>
+
+                <!-- Step Controls Footer -->
+                <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                    <button id="btn-quiz-prev" onclick="quizPrev()" class="px-5 py-2.5 rounded-full border border-white/15 text-gray-400 text-xs tracking-widest uppercase hover:text-white hover:border-white/40 transition-all disabled:opacity-30 disabled:cursor-not-allowed flex items-center gap-2">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                        <span>Previous</span>
+                    </button>
+
+                    <button id="btn-quiz-next" onclick="quizNext()" disabled class="px-8 py-2.5 rounded-full bg-gradient-to-r from-gold-400 to-gold-500 text-obsidian-950 font-bold text-xs tracking-widest uppercase shadow-md hover:shadow-gold-400/20 transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2">
+                        <span id="btn-quiz-next-text">Continue</span>
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ================= 3. ANIMATED LOADING VIEW ================= -->
+        <section id="view-loading" class="w-full max-w-md text-center py-16 hidden">
+            <div class="relative w-32 h-32 mx-auto mb-8 flex items-center justify-center">
+                <div class="absolute inset-0 rounded-full border-2 border-gold-400/20 animate-ping"></div>
+                <div class="absolute inset-0 rounded-full border-2 border-t-gold-400 border-r-transparent border-b-gold-600 border-l-transparent animate-spin-slow"></div>
+                <div class="w-20 h-20 rounded-full bg-gold-400/10 border border-gold-400/40 flex flex-col items-center justify-center text-gold-300 font-serif text-2xl font-bold shadow-2xl">
+                    <span class="font-serif text-lg text-gold-300 font-bold tracking-widest">MAG</span>
+                    <span class="text-[7px] text-gray-400 tracking-[0.25em] font-sans uppercase -mt-1">2025</span>
+                </div>
+            </div>
+
+            <h3 id="loading-status-text" class="font-serif text-2xl md:text-3xl text-white font-normal mb-2">Analyzing Scent Signature...</h3>
+            <p class="text-xs text-gray-400 tracking-wider uppercase">Matching your responses against the 9 MAG Fragrance Formulations</p>
+        </section>
+
+
+        <!-- ================= 4. RESULTS REVEAL VIEW ================= -->
+        <section id="view-result" class="w-full max-w-4xl hidden fade-in-up">
+            
+            <!-- Result Title Header -->
+            <div class="text-center mb-8">
+                <div class="inline-flex items-center gap-2 px-5 py-1.5 rounded-full border border-gold-400/40 bg-gold-400/10 text-gold-300 text-xs tracking-[0.2em] uppercase font-semibold mb-3">
+                    <span>✦ Bespoke Fragrance Match ✦</span>
+                </div>
+                <h2 class="font-serif text-3xl sm:text-5xl text-white font-light">
+                    Your MAG Signature Scent is <br class="sm:hidden"/>
+                    <span id="res-header-name" class="font-normal gold-gradient-text italic">Sunset Waves</span>
+                </h2>
+                <p class="text-xs md:text-sm text-gray-400 mt-2 max-w-lg mx-auto font-light">
+                    Hand-matched to your personal mood, preferred sillage, and olfactory accord profile.
+                </p>
+            </div>
+
+            <!-- Primary Showcase Card -->
+            <div class="glass-panel rounded-3xl p-6 md:p-10 border border-gold-400/40 relative overflow-hidden shadow-2xl mb-8">
+                <div class="absolute -top-24 -right-24 w-80 h-80 bg-gold-400/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    
+                    <!-- MAG Perfume Bottle Visual -->
+                    <div class="lg:col-span-5 flex flex-col items-center justify-center">
+                        <div class="w-full aspect-square max-w-[280px] rounded-2xl bg-gradient-to-b from-obsidian-850 to-obsidian-950 border border-gold-400/20 flex flex-col items-center justify-center p-6 relative group shadow-2xl">
+                            <div class="absolute inset-3 border border-gold-400/15 rounded-xl pointer-events-none"></div>
+                            
+                            <!-- Bottle Graphic -->
+                            <div class="w-24 h-36 relative mb-4 flex items-center justify-center animate-float">
+                                <!-- Metallic Cap -->
+                                <div class="absolute top-0 w-10 h-7 bg-gradient-to-r from-gold-300 via-gold-400 to-gold-600 rounded-xs shadow-md border border-gold-200/40"></div>
+                                <!-- Collar -->
+                                <div class="absolute top-7 w-5 h-3 bg-gold-300/60 border-t border-gold-100"></div>
+                                <!-- Crystal Body -->
+                                <div class="absolute bottom-0 w-20 h-28 rounded-xl bg-gradient-to-b from-white/10 via-gold-400/15 to-obsidian-900 border border-gold-400/50 backdrop-blur-md flex flex-col items-center justify-center shadow-2xl p-2">
+                                    <span class="font-serif text-lg text-gold-300 font-bold tracking-widest">MAG</span>
+                                    <span id="res-bottle-sub" class="text-[7px] text-gray-300 tracking-[0.2em] font-sans -mt-1 uppercase text-center truncate w-full px-1">EST. 2025</span>
+                                </div>
+                            </div>
+
+                            <span id="res-badge" class="text-[10px] tracking-[0.2em] uppercase font-bold text-gold-300 bg-gold-400/15 px-3.5 py-1 rounded-full border border-gold-400/30">
+                                Fresh Aquatic
+                            </span>
+                            <span id="res-match-percentage" class="text-[11px] font-mono text-gray-400 mt-2">
+                                98% Match Score
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Perfume Notes & Details -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <div>
+                            <h3 id="res-title" class="font-serif text-3xl md:text-4xl text-white font-bold gold-gradient-text tracking-wide">
+                                Sunset Waves
+                            </h3>
+                            <p id="res-category-tag" class="text-xs font-semibold text-gold-300/90 tracking-widest uppercase mt-1">
+                                Fresh Aquatic Formulation
+                            </p>
+                            <p id="res-description" class="text-xs md:text-sm text-gray-300 mt-3 leading-relaxed font-light">
+                                An invigorating splash of sunlit ocean mist, crisp marine accords, and fresh bergamot citrus.
+                            </p>
+                        </div>
+
+                        <!-- Personal Match Narrative -->
+                        <div class="bg-obsidian-950/90 p-4 rounded-xl border border-white/5 space-y-1">
+                            <span class="text-[10px] tracking-[0.2em] uppercase font-bold text-gold-400 block">Why This Was Chosen For You</span>
+                            <p id="res-why-narrative" class="text-xs text-gray-300 leading-relaxed italic font-light">
+                                You expressed a desire for a clean, refreshing vibe with effortless daytime presence. Sunset Waves delivers crisp sea salt notes combined with grounding ambergris.
+                            </p>
+                        </div>
+
+                        <!-- Olfactory Notes Pyramid Grid -->
+                        <div>
+                            <h4 class="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-400 mb-2">Fragrance Notes Pyramid</h4>
+                            <div class="grid grid-cols-3 gap-2 text-center text-xs">
+                                <div class="bg-white/5 p-2.5 rounded-xl border border-white/5">
+                                    <span class="text-[9px] text-gold-400/90 block uppercase tracking-wider font-semibold">Top Notes</span>
+                                    <span id="res-notes-top" class="font-medium text-gray-200 mt-0.5 block truncate">Sea Salt, Bergamot</span>
+                                </div>
+                                <div class="bg-white/5 p-2.5 rounded-xl border border-white/5">
+                                    <span class="text-[9px] text-gold-400/90 block uppercase tracking-wider font-semibold">Heart Notes</span>
+                                    <span id="res-notes-heart" class="font-medium text-gray-200 mt-0.5 block truncate">Marine Accord</span>
+                                </div>
+                                <div class="bg-white/5 p-2.5 rounded-xl border border-white/5">
+                                    <span class="text-[9px] text-gold-400/90 block uppercase tracking-wider font-semibold">Base Notes</span>
+                                    <span id="res-notes-base" class="font-medium text-gray-200 mt-0.5 block truncate">Cedarwood, Ambergris</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Character Traits -->
+                        <div class="space-y-1.5 pt-1 border-t border-white/5 text-xs text-gray-400">
+                            <div class="flex items-center justify-between">
+                                <span>Ideal Setting:</span>
+                                <span id="res-setting" class="text-gold-300 font-medium">Spring / Summer Daytime</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span>Projection Profile:</span>
+                                <span id="res-projection" class="text-gold-300 font-medium">Crisp & Inviting</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Card Action Controls -->
+                <div class="mt-8 pt-6 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+                    <button onclick="copyMatchSummary()" class="px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/15 border border-white/15 text-white text-xs font-semibold tracking-wider uppercase transition-all flex items-center gap-2">
+                        <svg class="w-4 h-4 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                        <span>Share Match</span>
+                    </button>
+
+                    <div class="flex items-center gap-3">
+                        <button onclick="startQuiz()" class="px-5 py-2.5 rounded-full border border-gold-400/40 text-gold-300 hover:bg-gold-400/10 text-xs font-semibold tracking-wider uppercase transition-all">
+                            Retake Quiz
+                        </button>
+                        <button onclick="navTo('catalog')" class="px-6 py-2.5 rounded-full bg-gradient-to-r from-gold-400 to-gold-500 text-obsidian-950 font-bold text-xs tracking-widest uppercase shadow-lg hover:shadow-gold-400/20 transition-all">
+                            View All 9 Scents
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Runner-Up Recommendations -->
+            <div class="space-y-4">
+                <h4 class="text-xs uppercase tracking-[0.25em] font-semibold text-gray-400 text-center">Alternative Scent Matches You May Enjoy</h4>
+                <div id="res-runner-ups" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Runner ups injected by JS -->
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- ================= 5. FULL CATALOG VIEW ================= -->
+        <section id="view-catalog" class="w-full max-w-5xl hidden fade-in-up">
+            
+            <div class="text-center mb-8">
+                <span class="text-xs font-bold uppercase tracking-[0.25em] text-gold-400">MAG Fragrances • Portfolio</span>
+                <h2 class="font-serif text-3xl md:text-5xl text-white font-normal mt-1">The 9 Pure Formulations</h2>
+                <p class="text-xs text-gray-400 mt-2 max-w-md mx-auto">Explore the scent profiles, pyramid notes, and personalities of our entire establishment collection.</p>
+                
+                <!-- Category Filter Pills -->
+                <div class="flex flex-wrap items-center justify-center gap-2 mt-6" id="catalog-category-filters">
+                    <button onclick="filterCatalog('all')" class="cat-filter-btn active text-xs px-4 py-1.5 rounded-full border border-gold-400 bg-gold-400/20 text-gold-300 font-medium">All 9 Scents</button>
+                    <button onclick="filterCatalog('Fresh')" class="cat-filter-btn text-xs px-4 py-1.5 rounded-full border border-white/10 text-gray-400 hover:text-white">Fresh Aquatic</button>
+                    <button onclick="filterCatalog('Gourmand')" class="cat-filter-btn text-xs px-4 py-1.5 rounded-full border border-white/10 text-gray-400 hover:text-white">Decadent Gourmand</button>
+                    <button onclick="filterCatalog('Oriental')" class="cat-filter-btn text-xs px-4 py-1.5 rounded-full border border-white/10 text-gray-400 hover:text-white">Noble Oriental</button>
+                    <button onclick="filterCatalog('Spicy')" class="cat-filter-btn text-xs px-4 py-1.5 rounded-full border border-white/10 text-gray-400 hover:text-white">Spicy & Leather</button>
+                </div>
+            </div>
+
+            <!-- Grid of 9 Perfumes -->
+            <div id="catalog-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- Perfumes injected by JS -->
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= SINGLE PERFUME DETAIL MODAL ================= -->
+    <div id="modal-detail" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="glass-panel border border-gold-400/40 rounded-3xl max-w-lg w-full p-6 md:p-8 relative shadow-2xl text-center my-auto">
+            <button onclick="closeDetailModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-gray-300 flex items-center justify-center text-xs">
+                ✕
+            </button>
+            <div id="modal-detail-content">
+                <!-- Dynamic detail injected here -->
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ================= SHARE LINK GENERATOR MODAL ================= -->
+    <div id="modal-share" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="glass-panel border border-gold-400/40 rounded-3xl max-w-lg w-full p-6 md:p-8 relative shadow-2xl text-left my-auto">
+            <button onclick="closeShareModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-gray-300 flex items-center justify-center text-xs">
+                ✕
+            </button>
+            
+            <div class="flex items-center space-x-3 mb-4">
+                <div class="w-10 h-10 rounded-full bg-gold-400/10 border border-gold-400/30 flex items-center justify-center text-gold-300 font-serif text-lg">
+                    ✦
+                </div>
+                <div>
+                    <h3 class="font-serif text-xl font-bold text-white">Customer Quiz Direct Link</h3>
+                    <p class="text-xs text-gray-400">Share this consultation quiz with your clients.</p>
+                </div>
+            </div>
+
+            <p class="text-xs text-gray-300 mb-3 leading-relaxed font-light">
+                Send this link to customers via WhatsApp, Instagram, or email to guide them directly to their personalized MAG perfume choice:
+            </p>
+
+            <!-- Link Box -->
+            <div class="bg-obsidian-950 p-3 rounded-xl border border-white/10 flex items-center justify-between gap-2 mb-4">
+                <input id="share-url-input" type="text" readonly value="https://magfragrances.com/scent-quiz" class="bg-transparent text-xs font-mono text-gold-300 w-full focus:outline-none select-all" />
+                <button onclick="copyShareInputUrl()" class="px-4 py-2 rounded-lg bg-gold-400 text-obsidian-950 font-bold text-xs uppercase tracking-wider hover:bg-gold-300 transition-colors shrink-0">
+                    Copy Link
+                </button>
+            </div>
+
+            <div class="bg-gold-400/10 p-3.5 rounded-xl border border-gold-400/20 text-xs text-gray-300 space-y-1">
+                <span class="font-semibold text-gold-300 block uppercase tracking-wider text-[10px]">Sample Customer Message:</span>
+                <p class="italic text-gray-300 text-[11px]">
+                    "Discover your signature scent from our MAG Fragrances luxury collection! Take our 2-minute Scent Match Quiz here: <span class="text-gold-300 underline">https://magfragrances.com/scent-quiz</span>"
+                </p>
+            </div>
+
+            <div class="mt-6 flex justify-end">
+                <button onclick="copyCustomerMessage()" class="px-6 py-2.5 rounded-full bg-gradient-to-r from-gold-400 to-gold-500 text-obsidian-950 font-bold text-xs uppercase tracking-widest shadow-md">
+                    Copy Text & Link
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ================= TOAST NOTIFICATION ================= -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 translate-y-20 opacity-0 transition-all duration-300 glass-panel border border-gold-400/50 px-5 py-3 rounded-xl shadow-2xl flex items-center space-x-3 pointer-events-none">
+        <span class="text-gold-400 text-lg">✦</span>
+        <span id="toast-message" class="text-xs text-white font-medium">Link copied to clipboard!</span>
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer class="relative z-10 border-t border-white/10 py-6 text-center text-xs text-gray-400 glass-panel">
+        <p class="tracking-[0.25em] uppercase text-[10px] text-gray-400">© MAG FRAGRANCE HOUSE • EST. 2025 • ALL RIGHTS RESERVED</p>
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT APP LOGIC ================= -->
+    <script>
+        // ================= 1. THE 9 MAG PERFUMES DATABASE =================
+        const MAG_PERFUMES = [
+            {
+                id: 'sunset-waves',
+                name: 'Sunset Waves',
+                category: 'Fresh Aquatic',
+                subCategory: 'Aquatic Marine',
+                description: 'An invigorating ocean mist carrying sunlit citrus and crisp sea salt notes, grounded by ambergris and coastal cedar.',
+                topNotes: 'Sea Salt, Italian Bergamot',
+                heartNotes: 'Marine Accord, Rosemary',
+                baseNotes: 'Cedarwood, Ambergris',
+                setting: 'Spring / Summer Daytime',
+                projection: 'Crisp & Inviting',
+                vibe: 'Refreshing, Energetic, Sun-kissed',
+                scores: { fresh: 5, aquatic: 5, versatile: 3, subtle: 4 }
+            },
+            {
+                id: 'vanilla-desire',
+                name: 'Vanilla Desire',
+                category: 'Decadent Gourmand',
+                subCategory: 'Warm Gourmand',
+                description: 'A dark, addictive blend of rich espresso and roasted almond flowing into velvety bourbon vanilla and warm brown sugar.',
+                topNotes: 'Black Espresso, Almond',
+                heartNotes: 'Vanilla Orchid, Bourbon Vanilla',
+                baseNotes: 'Tonka Bean, Brown Sugar',
+                setting: 'Autumn / Winter Evenings & Intimate Dates',
+                projection: 'Warm & Seductive',
+                vibe: 'Decadent, Intimate, Hypnotic',
+                scores: { gourmand: 5, sweet: 5, romantic: 5, warm: 4 }
+            },
+            {
+                id: 'turath',
+                name: 'Turath',
+                category: 'Noble Oriental',
+                subCategory: 'Oriental Wood',
+                description: 'An majestic oriental masterpiece woven with golden saffron, velvety rose petals, deep agarwood oud, and dark praline.',
+                topNotes: 'Saffron, Rose Petals',
+                heartNotes: 'Deep Oud Wood, Praline',
+                baseNotes: 'Amber, Smoked Patchouli',
+                setting: 'Formal Galas & High-End Evenings',
+                projection: 'Regal & Long-Lasting',
+                vibe: 'Noble, Luxurious, Exotic',
+                scores: { oriental: 5, woody: 5, bold: 5, luxury: 5 }
+            },
+            {
+                id: 'prince-charming',
+                name: 'Prince Charming',
+                category: 'Versatile Amber',
+                subCategory: 'Fresh Amber',
+                description: 'A smooth, magnetic blend of fresh mint zest and green apple wrapped in elegant lavender, sweet vanilla, and cedarwood.',
+                topNotes: 'Mint Zest, Green Apple',
+                heartNotes: 'Smooth Lavender, Vanilla',
+                baseNotes: 'Tonka Bean, Cedarwood',
+                setting: 'All-Season Signature & Casual Chic',
+                projection: 'Smooth & Magnetic',
+                vibe: 'Charming, Versatile, Magnetic',
+                scores: { versatile: 5, fresh: 4, sweet: 3, romantic: 4 }
+            },
+            {
+                id: 'cognac',
+                name: 'Cognac',
+                category: 'Spicy Warm Wood',
+                subCategory: 'Smoky Spice',
+                description: 'A opulent evening fragrance featuring cured tobacco leaf, warm cocoa blossom, sweet vanilla bean, and rich aged woods.',
+                topNotes: 'Tobacco Leaf, Spicy Notes',
+                heartNotes: 'Vanilla Bean, Cacao, Tonka',
+                baseNotes: 'Rich Dry Fruits, Wood Accord',
+                setting: 'Cool Weather & Evening Lounges',
+                projection: 'Smoldering & Deep',
+                vibe: 'Refined, Wealthy, Mysterious',
+                scores: { spicy: 5, woody: 4, warm: 5, bold: 4 }
+            },
+            {
+                id: 'golden-hour',
+                name: 'Golden Hour',
+                category: 'Floral Gourmand',
+                subCategory: 'Radiant Floral',
+                description: 'A radiant, sunlit aura of juicy pear, orange blossom, and iris flower infused with sweet praline and warm patchouli.',
+                topNotes: 'Blackcurrant, Pear',
+                heartNotes: 'Iris, Jasmine, Orange Blossom',
+                baseNotes: 'Praline, Vanilla, Patchouli',
+                setting: 'Day-to-Night Sunshine & Celebrations',
+                projection: 'Luminous & Compliment-Rich',
+                vibe: 'Radiant, Upbeat, Elegant',
+                scores: { floral: 5, gourmand: 4, sweet: 4, versatile: 4 }
+            },
+            {
+                id: 'berry-blush',
+                name: 'Berry Blush',
+                category: 'Sweet Fruity Floral',
+                subCategory: 'Fruity Chic',
+                description: 'A vibrant cocktail of crushed wild berries and dark blackberry softened by violet, white jasmine, and amber woods.',
+                topNotes: 'Dark Red Berries, Blackberry',
+                heartNotes: 'Violet, Jasmine',
+                baseNotes: 'Musk, Soft Woods, Amber',
+                setting: 'Spring / Summer Everyday Chic',
+                projection: 'Playful & Vibrant',
+                vibe: 'Playful, Youthful, Charming',
+                scores: { fruity: 5, sweet: 5, fresh: 3, subtle: 3 }
+            },
+            {
+                id: 'gold-infusion',
+                name: 'Gold Infusion',
+                category: 'Bold Amber & Leather',
+                subCategory: 'Spicy Leather',
+                description: 'A high-octane statement fragrance featuring blood mandarin, warm cinnamon, deep rose, and rich golden leather.',
+                topNotes: 'Blood Mandarin, Cinnamon',
+                heartNotes: 'Rose, Leather Accord',
+                baseNotes: 'Golden Amber, Indian Patchouli',
+                setting: 'VIP Nightlife & High-Impact Events',
+                projection: 'Commanding & Bold',
+                vibe: 'Confident, High-Impact, Glamorous',
+                scores: { leather: 5, bold: 5, spicy: 4, night: 5 }
+            },
+            {
+                id: 'rebel',
+                name: 'Rebel',
+                category: 'Daring Sensual',
+                subCategory: 'Sensual Woody',
+                description: 'A captivating balance of juicy green pear and sweet vanilla pod contrasted against dark, earthy vetiver and amber.',
+                topNotes: 'Juicy Pear, Bergamot',
+                heartNotes: 'Vanilla Pod, Floral Nectar',
+                baseNotes: 'Earthy Vetiver, Amber',
+                setting: 'Nighttime VIP & Seductive Lounges',
+                projection: 'Sensual & Captivating',
+                vibe: 'Daring, Sensual, Unapologetic',
+                scores: { sensual: 5, bold: 4, sweet: 4, woody: 3 }
+            }
+        ];
+
+        // ================= 2. QUIZ QUESTIONS & WEIGHTING =================
+        const QUIZ_QUESTIONS = [
+            {
+                step: 1,
+                category: "Atmosphere & Mood",
+                title: "What atmosphere do you want your fragrance to create?",
+                subtitle: "Select the sensory emotion you wish to project when walking into a room.",
+                options: [
+                    {
+                        label: "Crisp, ocean mist & clean sea air breeze",
+                        desc: "Refreshing, sun-kissed marine clarity",
+                        weights: { 'sunset-waves': 5, 'prince-charming': 3 }
+                    },
+                    {
+                        label: "Sweet, juicy red berries & cheerful floral sunshine",
+                        desc: "Playful, bright & vibrant daytime warmth",
+                        weights: { 'berry-blush': 5, 'golden-hour': 3 }
+                    },
+                    {
+                        label: "Opulent luxury, noble oud wood & exotic velvet rose",
+                        desc: "Deep, regal Arabian elegance",
+                        weights: { 'turath': 5, 'cognac': 2 }
+                    },
+                    {
+                        label: "Cozy, decadent espresso vanilla & sweet indulgence",
+                        desc: "Intimate, warm & irresistible gourmand",
+                        weights: { 'vanilla-desire': 5, 'golden-hour': 2 }
+                    },
+                    {
+                        label: "Bold, smoldering cinnamon, dark leather & golden amber",
+                        desc: "High-impact, confident nightlife presence",
+                        weights: { 'gold-infusion': 5, 'cognac': 4, 'rebel': 3 }
+                    }
+                ]
+            },
+            {
+                step: 2,
+                category: "Key Scent Accord",
+                title: "Which key note accord captures your attention first?",
+                subtitle: "Choose the ingredient profile that feels most appealing to your palate.",
+                options: [
+                    {
+                        label: "Sea Salt, Italian Bergamot & Rosemary",
+                        desc: "Refreshing coastal aquatic notes",
+                        weights: { 'sunset-waves': 5, 'prince-charming': 2 }
+                    },
+                    {
+                        label: "Black Espresso, Bourbon Vanilla & Brown Sugar",
+                        desc: "Rich dark gourmand sweetness",
+                        weights: { 'vanilla-desire': 5 }
+                    },
+                    {
+                        label: "Saffron, Deep Oud Wood & Smoked Patchouli",
+                        desc: "Regal oriental woodiness",
+                        weights: { 'turath': 5 }
+                    },
+                    {
+                        label: "Mint Zest, Green Apple & Smooth Lavender",
+                        desc: "Fresh, smooth & versatile aromatic blend",
+                        weights: { 'prince-charming': 5 }
+                    },
+                    {
+                        label: "Tobacco Leaf, Spicy Notes & Rich Cacao",
+                        desc: "Warm spicy tobacco & dry fruits",
+                        weights: { 'cognac': 5, 'gold-infusion': 2 }
+                    },
+                    {
+                        label: "Dark Red Berries, Blackberry & Musk",
+                        desc: "Juicy, sweet fruity floral harmony",
+                        weights: { 'berry-blush': 5 }
+                    },
+                    {
+                        label: "Blackcurrant, Iris, Jasmine & Golden Praline",
+                        desc: "Radiant floral gourmand bloom",
+                        weights: { 'golden-hour': 5 }
+                    },
+                    {
+                        label: "Blood Mandarin, Cinnamon & Leather Accord",
+                        desc: "Bold spicy leather fragrance statement",
+                        weights: { 'gold-infusion': 5 }
+                    },
+                    {
+                        label: "Juicy Pear, Vanilla Pod & Earthy Vetiver",
+                        desc: "Sensual blend of fruit, vanilla & earthy vetiver",
+                        weights: { 'rebel': 5 }
+                    }
+                ]
+            },
+            {
+                step: 3,
+                category: "Wearing Setting",
+                title: "Where will you wear this MAG fragrance most often?",
+                subtitle: "Select your primary environment for maximum effect.",
+                options: [
+                    {
+                        label: "Daily wear, warm sunshine, gym & outdoor daytime outings",
+                        desc: "Fresh, clean & effortless",
+                        weights: { 'sunset-waves': 5, 'berry-blush': 3 }
+                    },
+                    {
+                        label: "Brunch dates, everyday luxury & social gatherings",
+                        desc: "Charming & compliment-rich",
+                        weights: { 'golden-hour': 5, 'prince-charming': 3 }
+                    },
+                    {
+                        label: "Intimate date nights & candlelit evening dinners",
+                        desc: "Warm, seductive close-up attraction",
+                        weights: { 'vanilla-desire': 5, 'rebel': 4, 'prince-charming': 2 }
+                    },
+                    {
+                        label: "Formal galas, high-end receptions & special celebrations",
+                        desc: "Black-tie distinction & noble presence",
+                        weights: { 'turath': 5, 'cognac': 3 }
+                    },
+                    {
+                        label: "VIP nightlife, high-energy events & late-night lounges",
+                        desc: "Bold magnetic statement",
+                        weights: { 'gold-infusion': 5, 'rebel': 3, 'cognac': 3 }
+                    }
+                ]
+            },
+            {
+                step: 4,
+                category: "Sillage & Projection",
+                title: "How do you prefer your perfume scent-trail (sillage)?",
+                subtitle: "Determines how your scent radiates to those surrounding you.",
+                options: [
+                    {
+                        label: "An airy, clean breeze that feels subtle and fresh",
+                        desc: "Intimate and non-intrusive",
+                        weights: { 'sunset-waves': 5, 'prince-charming': 3 }
+                    },
+                    {
+                        label: "A sweet, playful aura that gathers easy compliments",
+                        desc: "Upbeat and radiating warmth",
+                        weights: { 'berry-blush': 4, 'golden-hour': 5 }
+                    },
+                    {
+                        label: "A rich, oriental velvet trail that lingers for hours",
+                        desc: "Deep, memorable sophistication",
+                        weights: { 'turath': 5, 'cognac': 4 }
+                    },
+                    {
+                        label: "A warm, hypnotic bubble that draws people in close",
+                        desc: "Seductive gourmand attraction",
+                        weights: { 'vanilla-desire': 5, 'rebel': 3 }
+                    },
+                    {
+                        label: "A strong, magnetic projection that commands the room",
+                        desc: "High-impact leather and spices",
+                        weights: { 'gold-infusion': 5, 'rebel': 3 }
+                    }
+                ]
+            },
+            {
+                step: 5,
+                category: "Personal Aesthetic",
+                title: "Which personal aesthetic resonates most with you?",
+                subtitle: "Your fashion vibe completes the olfactory harmony.",
+                options: [
+                    {
+                        label: "White linen, coastal views & crisp minimalism",
+                        desc: "Clean coastal luxury",
+                        weights: { 'sunset-waves': 5 }
+                    },
+                    {
+                        label: "Pastel tones, wildflower gardens & glowing sunshine",
+                        desc: "Radiant & cheerful",
+                        weights: { 'golden-hour': 4, 'berry-blush': 4 }
+                    },
+                    {
+                        label: "Heavy velvet, gold accessories & rare oriental heritage",
+                        desc: "Opulent regal prestige",
+                        weights: { 'turath': 5 }
+                    },
+                    {
+                        label: "Cashmere knits, dark espresso & warm luxury",
+                        desc: "Cozy date-night comfort",
+                        weights: { 'vanilla-desire': 5, 'cognac': 3 }
+                    },
+                    {
+                        label: "Tailored black blazers, leather coats & city lights",
+                        desc: "Bold urban magnetism",
+                        weights: { 'gold-infusion': 5, 'rebel': 4, 'prince-charming': 2 }
+                    }
+                ]
+            }
+        ];
+
+        // ================= 3. APP STATE MANAGEMENT =================
+        let currentQuizIndex = 0;
+        let userAnswers = new Array(QUIZ_QUESTIONS.length).fill(null);
+        let currentMatchResult = null;
+
+        // Navigation Controller
+        function navTo(screenId) {
+            document.getElementById('view-intro').classList.add('hidden');
+            document.getElementById('view-quiz').classList.add('hidden');
+            document.getElementById('view-loading').classList.add('hidden');
+            document.getElementById('view-result').classList.add('hidden');
+            document.getElementById('view-catalog').classList.add('hidden');
+
+            if (screenId === 'intro') document.getElementById('view-intro').classList.remove('hidden');
+            if (screenId === 'quiz') document.getElementById('view-quiz').classList.remove('hidden');
+            if (screenId === 'loading') document.getElementById('view-loading').classList.remove('hidden');
+            if (screenId === 'result') document.getElementById('view-result').classList.remove('hidden');
+            if (screenId === 'catalog') {
+                document.getElementById('view-catalog').classList.remove('hidden');
+                renderCatalog('all');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ================= 4. QUIZ LOGIC =================
+        function startQuiz() {
+            currentQuizIndex = 0;
+            userAnswers = new Array(QUIZ_QUESTIONS.length).fill(null);
+            navTo('quiz');
+            renderQuizStep();
+        }
+
+        function renderQuizStep() {
+            const q = QUIZ_QUESTIONS[currentQuizIndex];
+            
+            document.getElementById('quiz-step-indicator').innerText = `Question ${currentQuizIndex + 1} of ${QUIZ_QUESTIONS.length}`;
+            document.getElementById('quiz-category-indicator').innerText = q.category;
+            
+            const pct = Math.round(((currentQuizIndex + 1) / QUIZ_QUESTIONS.length) * 100);
+            document.getElementById('quiz-progress-text').innerText = `${pct}%`;
+            document.getElementById('quiz-progress-bar').style.width = `${pct}%`;
+
+            document.getElementById('quiz-title').innerText = q.title;
+            document.getElementById('quiz-subtitle').innerText = q.subtitle;
+
+            const container = document.getElementById('quiz-options-container');
+            container.innerHTML = '';
+
+            q.options.forEach((opt, idx) => {
+                const isSelected = (userAnswers[currentQuizIndex] === idx);
+                const card = document.createElement('div');
+                
+                card.className = `glass-panel p-4 rounded-2xl border transition-all cursor-pointer flex items-center justify-between group ${
+                    isSelected ? 'option-selected' : 'border-white/10 hover:border-gold-400/50 hover:bg-white/5'
+                }`;
+                card.onclick = () => selectQuizOption(idx);
+
+                card.innerHTML = `
+                    <div class="flex items-center space-x-3.5">
+                        <div class="w-7 h-7 rounded-full border flex items-center justify-center text-xs font-mono font-bold shrink-0 ${
+                            isSelected 
+                            ? 'border-gold-400 bg-gold-400 text-obsidian-950' 
+                            : 'border-white/20 text-gray-400 group-hover:border-gold-400/60'
+                        }">
+                            ${String.fromCharCode(65 + idx)}
+                        </div>
+                        <div>
+                            <p class="text-xs md:text-sm font-medium text-white group-hover:text-gold-200 transition-colors">${opt.label}</p>
+                            <p class="text-[11px] text-gray-400 mt-0.5 font-light">${opt.desc}</p>
+                        </div>
+                    </div>
+                    <div class="w-4 h-4 rounded-full border flex items-center justify-center shrink-0 ${
+                        isSelected ? 'border-gold-400 bg-gold-400' : 'border-white/10'
+                    }">
+                        ${isSelected ? '<div class="w-1.5 h-1.5 rounded-full bg-obsidian-950"></div>' : ''}
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+
+            document.getElementById('btn-quiz-prev').disabled = (currentQuizIndex === 0);
+            const btnNext = document.getElementById('btn-quiz-next');
+            btnNext.disabled = (userAnswers[currentQuizIndex] === null);
+
+            document.getElementById('btn-quiz-next-text').innerText = (currentQuizIndex === QUIZ_QUESTIONS.length - 1) ? "Reveal My Match" : "Continue";
+        }
+
+        function selectQuizOption(optIdx) {
+            userAnswers[currentQuizIndex] = optIdx;
+            renderQuizStep();
+        }
+
+        function quizPrev() {
+            if (currentQuizIndex > 0) {
+                currentQuizIndex--;
+                renderQuizStep();
+            }
+        }
+
+        function quizNext() {
+            if (userAnswers[currentQuizIndex] === null) return;
+
+            if (currentQuizIndex < QUIZ_QUESTIONS.length - 1) {
+                currentQuizIndex++;
+                renderQuizStep();
+            } else {
+                calculateMatch();
+            }
+        }
+
+        // ================= 5. MATCH CALCULATION =================
+        function calculateMatch() {
+            const scores = {};
+            MAG_PERFUMES.forEach(p => scores[p.id] = 0);
+
+            userAnswers.forEach((ansIdx, qIdx) => {
+                const opt = QUIZ_QUESTIONS[qIdx].options[ansIdx];
+                if (opt && opt.weights) {
+                    for (const [id, weight] of Object.entries(opt.weights)) {
+                        scores[id] = (scores[id] || 0) + weight;
+                    }
+                }
+            });
+
+            const sorted = Object.keys(scores).map(id => ({
+                id,
+                score: scores[id],
+                perfume: MAG_PERFUMES.find(p => p.id === id)
+            })).sort((a, b) => b.score - a.score);
+
+            // Trigger Loading Screen
+            navTo('loading');
+
+            const statusTexts = [
+                "Analyzing Olfactory Pyramid...",
+                "Distilling Accords & Sillage...",
+                "Harmonizing Scent Signature..."
+            ];
+            let sIdx = 0;
+            const interval = setInterval(() => {
+                sIdx = (sIdx + 1) % statusTexts.length;
+                document.getElementById('loading-status-text').innerText = statusTexts[sIdx];
+            }, 500);
+
+            setTimeout(() => {
+                clearInterval(interval);
+                displayResults(sorted);
+            }, 1600);
+        }
+
+        // ================= 6. DISPLAY RESULTS =================
+        function displayResults(sortedResults) {
+            const topMatch = sortedResults[0].perfume;
+            const secondMatch = sortedResults[1].perfume;
+            const thirdMatch = sortedResults[2].perfume;
+
+            currentMatchResult = topMatch;
+            navTo('result');
+
+            document.getElementById('res-header-name').innerText = topMatch.name;
+            document.getElementById('res-title').innerText = topMatch.name;
+            document.getElementById('res-category-tag').innerText = `${topMatch.category} Formulation`;
+            document.getElementById('res-description').innerText = topMatch.description;
+            document.getElementById('res-badge').innerText = topMatch.subCategory;
+
+            document.getElementById('res-notes-top').innerText = topMatch.topNotes;
+            document.getElementById('res-notes-heart').innerText = topMatch.heartNotes;
+            document.getElementById('res-notes-base').innerText = topMatch.baseNotes;
+
+            document.getElementById('res-setting').innerText = topMatch.setting;
+            document.getElementById('res-projection').innerText = topMatch.projection;
+            document.getElementById('res-bottle-sub').innerText = topMatch.name;
+
+            // Tailored narrative based on first answer
+            const firstChoiceLabel = QUIZ_QUESTIONS[0].options[userAnswers[0]].label.toLowerCase();
+            document.getElementById('res-why-narrative').innerText = 
+                `Based on your preference for ${firstChoiceLabel}, ${topMatch.name} offers the ideal MAG formulation. Featuring ${topMatch.topNotes.toLowerCase()} leading into ${topMatch.baseNotes.toLowerCase()}, it embodies a ${topMatch.vibe.toLowerCase()} presence.`;
+
+            // Runner Ups
+            const runnerContainer = document.getElementById('res-runner-ups');
+            runnerContainer.innerHTML = '';
+            
+            [secondMatch, thirdMatch].forEach(runner => {
+                const card = document.createElement('div');
+                card.className = "glass-panel p-4 rounded-2xl border border-white/10 hover:border-gold-400/40 transition-all cursor-pointer flex items-center justify-between";
+                card.onclick = () => openDetailModal(runner.id);
+
+                card.innerHTML = `
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-xl bg-gold-400/10 border border-gold-400/30 flex items-center justify-center text-gold-300 font-serif font-bold text-xs">
+                            MAG
+                        </div>
+                        <div>
+                            <h5 class="text-sm font-semibold text-white">${runner.name}</h5>
+                            <p class="text-[11px] text-gray-400 mt-0.5">${runner.category}</p>
+                        </div>
+                    </div>
+                    <span class="text-[10px] uppercase font-bold tracking-wider text-gold-400 bg-gold-400/10 px-3 py-1 rounded-full border border-gold-400/20">
+                        View Scent
+                    </span>
+                `;
+                runnerContainer.appendChild(card);
+            });
+        }
+
+        // ================= 7. CATALOG RENDER =================
+        function filterCatalog(catKey) {
+            const btns = document.querySelectorAll('#catalog-category-filters button');
+            btns.forEach(b => {
+                b.className = "cat-filter-btn text-xs px-4 py-1.5 rounded-full border border-white/10 text-gray-400 hover:text-white";
+            });
+            event.target.className = "cat-filter-btn active text-xs px-4 py-1.5 rounded-full border border-gold-400 bg-gold-400/20 text-gold-300 font-medium";
+
+            renderCatalog(catKey);
+        }
+
+        function renderCatalog(filterKey) {
+            const grid = document.getElementById('catalog-grid');
+            grid.innerHTML = '';
+
+            const list = (filterKey === 'all') 
+                ? MAG_PERFUMES 
+                : MAG_PERFUMES.filter(p => p.category.toLowerCase().includes(filterKey.toLowerCase()) || p.description.toLowerCase().includes(filterKey.toLowerCase()));
+
+            list.forEach(item => {
+                const card = document.createElement('div');
+                card.className = "glass-panel p-5 rounded-2xl border border-white/10 hover:border-gold-400/40 transition-all flex flex-col justify-between group cursor-pointer";
+                card.onclick = () => openDetailModal(item.id);
+
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-[9px] uppercase tracking-widest text-gold-400 bg-gold-400/10 px-2.5 py-0.5 rounded-full border border-gold-400/20">${item.category}</span>
+                            <span class="text-[10px] text-gray-400 font-mono">EST. 2025</span>
+                        </div>
+                        <h4 class="font-serif text-2xl font-bold text-white group-hover:text-gold-300 transition-colors">${item.name}</h4>
+                        <p class="text-xs text-gray-300 mt-2 line-clamp-2 leading-relaxed font-light">${item.description}</p>
+                    </div>
+                    
+                    <div class="mt-4 pt-3 border-t border-white/10 space-y-2">
+                        <div class="text-[11px] text-gray-400">
+                            <strong class="text-gold-400 font-normal">Notes:</strong> ${item.topNotes} → ${item.baseNotes}
+                        </div>
+                        <div class="flex items-center justify-between text-xs pt-1">
+                            <span class="text-gray-400 text-[10px] uppercase tracking-wider">${item.subCategory}</span>
+                            <span class="text-gold-300 font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1 text-[11px]">
+                                Details →
+                            </span>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // ================= 8. SINGLE PERFUME DETAIL MODAL =================
+        function openDetailModal(id) {
+            const p = MAG_PERFUMES.find(item => item.id === id);
+            if (!p) return;
+
+            const content = document.getElementById('modal-detail-content');
+            content.innerHTML = `
+                <div class="w-12 h-12 rounded-full bg-gold-400/10 border border-gold-400/40 flex items-center justify-center text-gold-300 font-serif text-xl font-bold mx-auto mb-3">
+                    MAG
+                </div>
+                <span class="text-[9px] uppercase tracking-[0.2em] font-bold text-gold-400 bg-gold-400/10 px-3 py-1 rounded-full border border-gold-400/20">
+                    ${p.category} Formulation
+                </span>
+                <h3 class="font-serif text-3xl font-bold text-white mt-3 gold-gradient-text">${p.name}</h3>
+                
+                <p class="text-xs text-gray-300 mt-3 leading-relaxed font-light">${p.description}</p>
+
+                <!-- Full Notes Pyramid -->
+                <div class="my-5 p-4 rounded-2xl bg-obsidian-950 border border-white/10 text-left space-y-3 text-xs">
+                    <div>
+                        <span class="text-[9px] uppercase text-gold-400 font-bold block tracking-wider">Top Notes</span>
+                        <span class="text-gray-200 font-medium">${p.topNotes}</span>
+                    </div>
+                    <div>
+                        <span class="text-[9px] uppercase text-gold-400 font-bold block tracking-wider">Heart Notes</span>
+                        <span class="text-gray-200 font-medium">${p.heartNotes}</span>
+                    </div>
+                    <div>
+                        <span class="text-[9px] uppercase text-gold-400 font-bold block tracking-wider">Base Notes</span>
+                        <span class="text-gray-200 font-medium">${p.baseNotes}</span>
+                    </div>
+                    <div class="pt-2 border-t border-white/5 flex justify-between">
+                        <span class="text-gray-400">Best Setting:</span>
+                        <span class="text-gold-300 font-medium">${p.setting}</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-400">Scent Vibe:</span>
+                        <span class="text-gold-300 font-medium">${p.vibe}</span>
+                    </div>
+                </div>
+
+                <button onclick="closeDetailModal()" class="w-full py-3 rounded-full bg-gradient-to-r from-gold-400 to-gold-500 text-obsidian-950 font-bold text-xs uppercase tracking-widest shadow-md">
+                    Back to Collection
+                </button>
+            `;
+
+            document.getElementById('modal-detail').classList.remove('hidden');
+        }
+
+        function closeDetailModal() {
+            document.getElementById('modal-detail').classList.add('hidden');
+        }
+
+        // ================= 9. SHARE MODAL & LINK GENERATOR =================
+        function openShareModal() {
+            document.getElementById('share-url-input').value = window.location.href.split('#')[0] + "#scent-quiz";
+            document.getElementById('modal-share').classList.remove('hidden');
+        }
+
+        function closeShareModal() {
+            document.getElementById('modal-share').classList.add('hidden');
+        }
+
+        function copyShareInputUrl() {
+            const input = document.getElementById('share-url-input');
+            copyTextToClipboard(input.value, "Quiz link copied to clipboard!");
+        }
+
+        function copyCustomerMessage() {
+            const url = document.getElementById('share-url-input').value;
+            const message = `Discover your signature fragrance from MAG Fragrances (EST. 2025)! Take our 2-minute Scent Match Quiz here: ${url}`;
+            copyTextToClipboard(message, "Customer message & link copied!");
+        }
+
+        function copyMatchSummary() {
+            if (!currentMatchResult) return;
+            const text = `My MAG Fragrance signature match is "${currentMatchResult.name}" (${currentMatchResult.category})! Discover your scent at MAG Fragrances.`;
+            copyTextToClipboard(text, "Scent match summary copied to clipboard!");
+        }
+
+        function copyTextToClipboard(text, successMessage) {
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(() => showToast(successMessage));
+            } else {
+                const textArea = document.createElement("textarea");
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    showToast(successMessage);
+                } catch (err) {
+                    showToast("Copied to clipboard!");
+                }
+                document.body.removeChild(textArea);
+            }
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').innerText = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
+```
